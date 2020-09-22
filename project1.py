@@ -18,40 +18,40 @@ tv.drop("video_id", inplace=True, axis=1)
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# plt.hist(tv['cvt_per_day'], bins=range(0, 15000, 30), color='r', label='cvt_per_day', density=True, alpha=0.5)
+plt.hist(tv['cvt_per_day'], bins=range(0, 15000, 30), color='r', label='cvt_per_day', density=True, alpha=0.5)
 # 0 到15000的数据，30的区间，红色线，alpha是透明度
-# plt.legend(loc='upper right')
-# plt.title('Histograms of cvt_per_day before data processing')
-# plt.xlabel('cvt_per_day')
-# plt.ylabel('density')
-# plt.show()
+plt.legend(loc='upper right')
+plt.title('Histograms of cvt_per_day before data processing')
+plt.xlabel('cvt_per_day')
+plt.ylabel('density')
+plt.show()
 
-# corr = tv.corr()
-# sns.heatmap(corr, cmap='YlGnBu')
-# plt.show()
-#
-# plt.ylim(15000)
-# sns.boxplot(x='import_id', y='cvt_per_day', data=tv)
-# plt.show()
-#
-# plt.ylim(15000)
-# sns.boxplot(x='mpaa', y='cvt_per_day', data=tv)
-# plt.show()
-#
-# plt.ylim(15000)
-# sns.boxplot(x='awards', y='cvt_per_day', data=tv)
-# plt.show()
-#
-# gen_split = tv['genres'].str.get_dummies(sep=',').sum()
-# gen_split.sort_values(ascending=False).plot.bar()
-# plt.show()
-#
-# plt.hist(tv['release_year'].values, bins=range(1917, 2017, 10), alpha=0.5, color='r', label='release_year')
-# plt.legend(loc='upper left')
-# plt.title("release year before data processing")
-# plt.xlabel('release_year')
-# plt.ylabel('Count')
-# plt.show()
+corr = tv.corr()
+sns.heatmap(corr, cmap='YlGnBu')
+plt.show()
+
+plt.ylim(15000)
+sns.boxplot(x='import_id', y='cvt_per_day', data=tv)
+plt.show()
+
+plt.ylim(15000)
+sns.boxplot(x='mpaa', y='cvt_per_day', data=tv)
+plt.show()
+
+plt.ylim(15000)
+sns.boxplot(x='awards', y='cvt_per_day', data=tv)
+plt.show()
+
+gen_split = tv['genres'].str.get_dummies(sep=',').sum()
+gen_split.sort_values(ascending=False).plot.bar()
+plt.show()
+
+plt.hist(tv['release_year'].values, bins=range(1917, 2017, 10), alpha=0.5, color='r', label='release_year')
+plt.legend(loc='upper left')
+plt.title("release year before data processing")
+plt.xlabel('release_year')
+plt.ylabel('Count')
+plt.show()
 
 # convert categorical variables into dummy variables (one hot encoding)
 d_import_id = pd.get_dummies(tv['import_id']).astype(np.int64)
@@ -130,11 +130,11 @@ model_list = [classifierLasso, classifierRandomForest, classifierRidge]
 count = 0
 
 
-# for classifier in model_list:
-#     cv_score = model_selection.cross_val_score(classifier, x_train, y_train, cv=10)
-#     print(cv_score)
-#     print('Model Accuracy of ' + models_names[count] + ' is ' + str(cv_score.mean()))
-#     count += 1
+for classifier in model_list:
+    cv_score = model_selection.cross_val_score(classifier, x_train, y_train, cv=10)
+    print(cv_score)
+    print('Model Accuracy of ' + models_names[count] + ' is ' + str(cv_score.mean()))
+    count += 1
 
 from sklearn.metrics import mean_squared_error, r2_score
 from math import sqrt
