@@ -2,4 +2,4 @@
 1. Understand the data, and find the correlation between the cvt_per_day with each of the different features
 2. Data cleaning, transformed and standard the data
 3. Model training(Lasso Regression, Ridge Regression, Random Forest) and evaluated the result via 5-fold cross validation technique
-4. Model evaluation and identified the top factors influenced the result
+4. Model evaluation and identified the top factors that influenced the result
